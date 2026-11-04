@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: dark;
+  --dr-bg-0: #020308;
+  --dr-bg-1: #05070d;
+  --dr-bg-2: #0a1020;
+  --dr-calm: #22e6ff;
+  --dr-mid: #8a5cff;
+  --dr-hot: #ff3d9a;
+  --dr-core: #eafcff;
+  --dr-vignette: 0.62;
+  --dr-grain: 0.05;
+  --dr-bloom-blur: 10px;
+  --dr-bloom-opacity: 0.7;
+
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  color-scheme: dark;
+  background-color: #050507;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) #050507;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--dr-bg-0);
+  color: #f1f5f9;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ───────────────────────── Sleek Dark Mode Scrollbar ───────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050507;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  border: 2px solid #050507;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background: #050507;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@keyframes dr-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ───────────────────────── DataRain Component Styles ───────────────────────── */
+
+.dr-root {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  background:
+    radial-gradient(110% 90% at 50% 0%, var(--dr-bg-2) 0%, var(--dr-bg-1) 52%, var(--dr-bg-0) 100%);
+  animation: dr-fade-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dr-root--contained {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.dr-main,
+.dr-bloom {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.dr-bloom {
+  filter: blur(var(--dr-bloom-blur, 10px));
+  opacity: var(--dr-bloom-opacity, 0.7);
+  transform: scale(1.02);
+}
+
+.dr-main {
+  z-index: 1;
+}
+
+.dr-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 85% 80% at 50% 50%,
+    transparent 38%,
+    rgba(2, 3, 8, var(--dr-vignette, 0.62)) 100%
+  );
+}
+
+.dr-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: var(--dr-grain, 0.05);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 0);
+  background-size: 24px 24px;
+}

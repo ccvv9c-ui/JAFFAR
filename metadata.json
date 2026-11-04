@@ -1,0 +1,6 @@
+{
+  "name": "DataRain Hydrodynamic Field",
+  "description": "Interactive divergence-free particle stream and Kármán vortex street canvas component built with React, TypeScript, Tailwind CSS, and shadcn/ui.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
