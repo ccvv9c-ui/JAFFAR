@@ -348,30 +348,30 @@ export function CinematicFooter({
           </div>
 
           {/* 1. Diagonal Sleek Marquee */}
-          <div className="absolute top-12 left-0 w-full overflow-hidden border-y border-white/10 bg-black/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
-            <div className="flex w-max animate-footer-scroll-marquee text-xs md:text-sm font-bold tracking-[0.25em] text-zinc-400 uppercase">
+          <div className="absolute top-8 md:top-12 left-0 w-full overflow-hidden border-y border-white/10 bg-black/60 backdrop-blur-md py-3 md:py-4 z-10 -rotate-2 scale-110 shadow-2xl">
+            <div className="flex w-max animate-footer-scroll-marquee text-[11px] md:text-sm font-bold tracking-[0.2em] md:tracking-[0.25em] text-zinc-400 uppercase">
               <MarqueeBlock />
               <MarqueeBlock />
             </div>
           </div>
 
           {/* 2. Main Center Content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 mt-14 md:mt-20 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
-              className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-12 text-center"
+              className="text-3xl sm:text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-7 sm:mb-9 md:mb-12 text-center leading-tight"
             >
               {heading}
             </h2>
 
             {/* Interactive Magnetic Pills Layout */}
-            <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
+            <div ref={linksRef} className="flex flex-col items-center gap-4 md:gap-6 w-full">
               {/* Primary Download Links (EXE & Setup) */}
-              <div className="flex flex-wrap justify-center gap-4 w-full" dir={dir}>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 w-full" dir={dir}>
                 {primaryLinks.map((link, idx) => (
                   <MagneticButton
                     as="a"
-                    className="footer-glass-pill px-9 py-5 rounded-full text-white font-bold text-sm md:text-base flex items-center gap-3 group"
+                    className="footer-glass-pill max-w-full px-5 py-3.5 sm:px-7 sm:py-4 md:px-9 md:py-5 rounded-full text-white font-bold text-xs sm:text-sm md:text-base flex items-center justify-center gap-2.5 md:gap-3 text-center group"
                     href={link.href}
                     key={idx}
                     rel="noopener noreferrer"
@@ -385,13 +385,13 @@ export function CinematicFooter({
 
               {/* Secondary Links (Official Website & Back to Portfolio) */}
               <div
-                className="flex flex-wrap justify-center gap-3 md:gap-5 w-full mt-2"
+                className="flex flex-wrap justify-center gap-2.5 sm:gap-3 md:gap-5 w-full mt-1 md:mt-2"
                 dir={dir}
               >
                 {secondaryLinks.map((link, idx) => (
                   <MagneticButton
                     as="a"
-                    className="footer-glass-pill px-7 py-3.5 rounded-full text-zinc-300 font-semibold text-xs md:text-sm hover:text-white flex items-center gap-2.5 group"
+                    className="footer-glass-pill max-w-full px-5 py-3 md:px-7 md:py-3.5 rounded-full text-zinc-300 font-semibold text-xs md:text-sm hover:text-white flex items-center justify-center gap-2 md:gap-2.5 text-center group"
                     href={link.href}
                     key={idx}
                     rel="noopener noreferrer"
@@ -405,10 +405,10 @@ export function CinematicFooter({
                 {onBack && (
                   <MagneticButton
                     as="button"
-                    className="footer-glass-pill px-7 py-3.5 rounded-full text-zinc-400 font-medium text-xs md:text-sm hover:text-white flex items-center gap-2"
+                    className="footer-glass-pill max-w-full px-5 py-3 md:px-7 md:py-3.5 rounded-full text-zinc-400 font-medium text-xs md:text-sm hover:text-white flex items-center justify-center gap-2 text-center"
                     onClick={onBack}
                   >
-                    <ArrowLeft className="w-4 h-4" />
+                    <ArrowLeft className="w-4 h-4 shrink-0" />
                     <span>{backLabel}</span>
                   </MagneticButton>
                 )}
@@ -417,12 +417,12 @@ export function CinematicFooter({
           </div>
 
           {/* 3. Bottom Bar / Credits */}
-          <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-zinc-500 text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
+          <div className="relative z-20 w-full pb-16 md:pb-8 px-4 sm:px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-3.5 md:gap-6">
+            <div className="text-zinc-500 text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1 text-center">
               {copyrightText}
             </div>
 
-            <div className="footer-glass-pill px-6 py-3 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-white/10">
+            <div className="footer-glass-pill px-5 py-2.5 md:px-6 md:py-3 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-white/10">
               <span className="text-zinc-400 text-[10px] md:text-xs font-bold uppercase tracking-widest">
                 Crafted with
               </span>
@@ -439,7 +439,7 @@ export function CinematicFooter({
 
             <MagneticButton
               as="button"
-              className="w-12 h-12 rounded-full footer-glass-pill flex items-center justify-center text-zinc-400 hover:text-white group order-3"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full footer-glass-pill flex items-center justify-center text-zinc-400 hover:text-white group order-3"
               onClick={scrollToTop}
             >
               <svg

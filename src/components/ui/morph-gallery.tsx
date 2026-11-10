@@ -329,10 +329,36 @@ export default function MorphGallery({
     return () => window.removeEventListener("keydown", onKey)
   }, [prev, next])
 
+  const touchStartXRef = useRef<number | null>(null)
+  const touchStartYRef = useRef<number | null>(null)
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
+    if (e.touches.length === 1) {
+      touchStartXRef.current = e.touches[0].clientX
+      touchStartYRef.current = e.touches[0].clientY
+    }
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return
+    const touch = e.changedTouches[0]
+    if (!touch) return
+    const dx = touch.clientX - touchStartXRef.current
+    const dy = touch.clientY - touchStartYRef.current
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      if (dx < 0) next()
+      else prev()
+    }
+  }
+
   return (
     <section
       dir="ltr"
       style={{ height }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       className={`relative w-full overflow-hidden bg-zinc-950 select-none ${className}`}
     >
       {/* Full-bleed WebGL Morphing Canvas */}
@@ -346,7 +372,7 @@ export default function MorphGallery({
         type="button"
         onClick={prev}
         aria-label="Previous image"
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/35 text-white/85 backdrop-blur-md transition-all hover:bg-black/60 hover:text-white hover:scale-105 cursor-pointer"
+        className="absolute left-2.5 md:left-5 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full border border-white/15 bg-black/45 md:bg-black/35 text-white/85 backdrop-blur-md transition-all hover:bg-black/60 hover:text-white hover:scale-105 cursor-pointer"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -356,13 +382,13 @@ export default function MorphGallery({
         type="button"
         onClick={next}
         aria-label="Next image"
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/35 text-white/85 backdrop-blur-md transition-all hover:bg-black/60 hover:text-white hover:scale-105 cursor-pointer"
+        className="absolute right-2.5 md:right-5 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full border border-white/15 bg-black/45 md:bg-black/35 text-white/85 backdrop-blur-md transition-all hover:bg-black/60 hover:text-white hover:scale-105 cursor-pointer"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
 
       {/* Bottom Floating Rectangular Image Thumbnail Bar (NO dots) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 rounded-xl bg-black/25 px-3.5 py-2 backdrop-blur-sm">
+      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-20 flex max-w-[calc(100vw-1.5rem)] items-center gap-1.5 sm:gap-2 md:gap-2.5 overflow-x-auto rounded-xl bg-black/35 md:bg-black/25 px-2.5 py-1.5 md:px-3.5 md:py-2 backdrop-blur-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {safeImages.map((src, i) => {
           const isActive = i === current
           return (
@@ -371,7 +397,7 @@ export default function MorphGallery({
               type="button"
               onClick={() => goTo(i)}
               aria-label={`View slide ${i + 1}`}
-              className={`relative h-12 w-20 shrink-0 overflow-hidden rounded-md transition-all duration-300 cursor-pointer ${
+              className={`relative max-sm:h-10 max-sm:w-14 h-12 w-20 shrink-0 overflow-hidden rounded-md transition-all duration-300 cursor-pointer ${
                 isActive
                   ? "ring-2 ring-white opacity-100 scale-105 shadow-[0_8px_25px_rgba(0,0,0,0.65)]"
                   : "opacity-50 hover:opacity-85 scale-100"

@@ -216,6 +216,33 @@ export const APPS_SHOWCASE_DATA: Record<string, AppShowcaseData> = {
       },
     ],
   },
+  "download-organizer": {
+    id: "download-organizer",
+    title: "منظم التنزيلات | Download Organizer",
+    giantText: "ORGANIZER",
+    heading: "Ready to organize?",
+    images: [
+      "/apps/download-organizer/slide-1.png",
+      "/apps/download-organizer/slide-2.png",
+      "/apps/download-organizer/slide-3.png",
+      "/apps/download-organizer/slide-4.png",
+    ],
+    marqueeItems: [
+      "Smart Downloads Dashboard",
+      "One-Click Auto Organization",
+      "Duplicate & Large File Detection",
+      "Flexible Custom Extension Rules",
+      "Safe Review & Instant Rollback",
+    ],
+    primaryLinks: [
+      {
+        label: "نسخة الديسكتوب المباشرة (Portable EXE)",
+        href: "https://drive.google.com/file/d/1CstDHI0pYpYflwAoytfu507657a4M-fI/view?usp=drive_link",
+        icon: "exe",
+      },
+    ],
+    secondaryLinks: [],
+  },
 };
 
 export function resolveAppShowcaseId(item: WorkItem): string {
@@ -263,6 +290,15 @@ export function resolveAppShowcaseId(item: WorkItem): string {
   ) {
     return "bayah-cv";
   }
+  if (
+    title.includes("منظم") ||
+    title.includes("التنزيلات") ||
+    title.includes("organizer") ||
+    item.id === 7 ||
+    item.id === "download-organizer"
+  ) {
+    return "download-organizer";
+  }
   return "pda4";
 }
 
@@ -293,18 +329,18 @@ export default function AppShowcaseView({
         {/* Top Floating Navigation Bar */}
         <div
           dir={t.dir}
-          className="absolute top-6 left-6 right-6 z-30 flex items-center justify-between pointer-events-none"
+          className="absolute top-4 left-3.5 right-3.5 md:top-6 md:left-6 md:right-6 z-30 flex items-center justify-between gap-2 pointer-events-none"
         >
           <button
             type="button"
             onClick={onBack}
-            className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full bg-black/45 px-5 py-2.5 text-xs md:text-sm font-semibold text-white backdrop-blur-md border border-white/15 transition hover:bg-black/70 hover:scale-105 cursor-pointer"
+            className="pointer-events-auto shrink-0 inline-flex items-center gap-1.5 md:gap-2.5 rounded-full bg-black/55 md:bg-black/45 px-3.5 py-2 md:px-5 md:py-2.5 text-[11px] sm:text-xs md:text-sm font-semibold text-white backdrop-blur-md border border-white/15 transition hover:bg-black/70 hover:scale-105 cursor-pointer"
           >
-            <ArrowRight className={`w-4 h-4 ${t.dir === "ltr" ? "rotate-180" : ""}`} />
-            <span>{t.backToPortfolio}</span>
+            <ArrowRight className={`w-3.5 h-3.5 md:w-4 md:h-4 shrink-0 ${t.dir === "ltr" ? "rotate-180" : ""}`} />
+            <span className="whitespace-nowrap">{t.backToPortfolio}</span>
           </button>
 
-          <div className="pointer-events-auto rounded-full bg-black/45 px-5 py-2 text-xs md:text-sm font-medium text-white/90 backdrop-blur-md border border-white/15">
+          <div className="pointer-events-auto min-w-0 max-w-[54vw] sm:max-w-[60vw] md:max-w-none truncate rounded-full bg-black/55 md:bg-black/45 px-3.5 py-1.5 md:px-5 md:py-2 text-[11px] sm:text-xs md:text-sm font-medium text-white/90 backdrop-blur-md border border-white/15">
             {appTrans?.fullTitle ?? app.title}
           </div>
         </div>
@@ -313,7 +349,7 @@ export default function AppShowcaseView({
         <MorphGallery height="100svh" images={app.images} />
 
         {/* Subtle Scroll Down Indicator */}
-        <div className="pointer-events-none absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-[11px] tracking-widest uppercase text-white/60 animate-bounce">
+        <div className="pointer-events-none absolute bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 px-4 text-center text-[10px] md:text-[11px] tracking-widest uppercase text-white/60 animate-bounce whitespace-nowrap">
           <span>{t.scrollDownHint}</span>
           <ChevronDown className="w-4 h-4" />
         </div>

@@ -518,7 +518,7 @@ const CSS =
   ".spf-r{opacity:0;transform:translateY(12px);filter:blur(6px);transition:opacity .9s ease,transform 1.1s cubic-bezier(.2,.75,.15,1),filter .9s ease;transition-delay:calc(var(--i,0) * 70ms);}" +
   ".spf[data-revealed] .spf-r{opacity:1;transform:none;filter:blur(0);}" +
   ".spf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}" +
-  "@container (max-width: 640px){.spf-line{stroke-width:13px;}.spf-bar{flex-direction:column;align-items:flex-start;}.spf-actions{width:100%;}.spf-btn{flex:1 1 140px;}}" +
+  "@container (max-width: 640px){.spf-main{padding:56px 18px 44px;}.spf-stage{width:min(100%,calc(clamp(92px,25cqw,135px) * var(--spf-ar)));margin-bottom:24px;}.spf-again{bottom:-14px;height:30px;padding:0 12px;font-size:11.5px;}.spf-title{font-size:clamp(20px,5.4cqw,25px);line-height:1.35;}.spf-desc{margin-top:14px;font-size:clamp(13.5px,3.6cqw,15px);line-height:1.68;padding-inline:4px;}.spf-line{stroke-width:13px;}.spf-bar{flex-direction:column;align-items:flex-start;}.spf-actions{width:100%;}.spf-btn{flex:1 1 140px;}}" +
   "@media (prefers-reduced-motion: reduce){.spf-r,.spf-stamp,.spf-guide,.spf-again,.spf-btn,.spf-scrib,.spf-link::after{transition:none;}.spf-r{opacity:1;transform:none;filter:none;}}"
 
 const reducedMotion = (): boolean =>

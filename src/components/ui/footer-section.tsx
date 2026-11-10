@@ -41,6 +41,7 @@ export interface UnifiedInfoHubTranslations {
     bayahCv: string;
     voiceEnv: string;
     compressor: string;
+    organizer: string;
   };
   hub: {
     badge: string;
@@ -72,6 +73,7 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
       bayahCv: 'بيئة السيرة الذاتية (Bayah CV)',
       voiceEnv: 'بيئة الصوت الذكية (Voice AI)',
       compressor: 'بيئة الضغط الرسمية (Compressor)',
+      organizer: 'منظم التنزيلات (Download Organizer)',
     },
     hub: {
       badge: 'دليل الموقع والمعلومات',
@@ -88,7 +90,7 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
             },
             {
               q: 'ما هي التطبيقات المتوفرة داخل المنصة؟',
-              a: 'تضم المنصة 6 مشاريع متكاملة: محرر المستندات الذكي (PDA4)، مترجم أوفلاين الذكي الذي يعمل بدون إنترنت، بيئة الأدوات الشاملة للأندرويد (Tools Hub)، منصة السير الذاتية (Bayah CV)، استوديو الذكاء الصوتي (بيئة الصوت)، وضاغط الوسائط الرسمية (بيئة الضغط).',
+              a: 'تضم المنصة 7 مشاريع متكاملة: محرر المستندات الذكي (PDA4)، مترجم أوفلاين الذكي الذي يعمل بدون إنترنت، بيئة الأدوات الشاملة للأندرويد (Tools Hub)، منصة السير الذاتية (Bayah CV)، استوديو الذكاء الصوتي (بيئة الصوت)، ضاغط الوسائط الرسمية (بيئة الضغط)، ومنظم التنزيلات الذكي (Download Organizer).',
             },
           ],
         },
@@ -155,6 +157,7 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
       bayahCv: 'Bayah CV Smart Resume Studio',
       voiceEnv: 'Voice Environment AI Studio',
       compressor: 'Official Media Compressor',
+      organizer: 'Download Organizer',
     },
     hub: {
       badge: 'ABOUT & FAQ',
@@ -167,11 +170,11 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
           items: [
             {
               q: 'What is this platform and what does it offer?',
-              a: 'This website is a unified digital hub showcasing 6 cross-platform applications and AI productivity tools built for Windows Desktop, Android, and the Web, with interactive previews and direct downloads.',
+              a: 'This website is a unified digital hub showcasing 7 cross-platform applications and AI productivity tools built for Windows Desktop, Android, and the Web, with interactive previews and direct downloads.',
             },
             {
               q: 'Which applications are included in the suite?',
-              a: 'The ecosystem includes PDA4 (AI Document Editor), Smart Offline Translator, Tools Hub (All-in-One Android Toolkit), Bayah CV (ATS Resume Studio), Voice Environment (AI Audio Studio), and Official Media Compressor.',
+              a: 'The ecosystem includes 7 projects: PDA4 (AI Document Editor), Smart Offline Translator, Tools Hub (All-in-One Android Toolkit), Bayah CV (ATS Resume Studio), Voice Environment (AI Audio Studio), Official Media Compressor, and Download Organizer.',
             },
           ],
         },
@@ -234,6 +237,7 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
       bayahCv: 'Bayah CV Studio de CV ATS',
       voiceEnv: 'Voice Environment Studio Audio IA',
       compressor: 'Compresseur de Médias Officiel',
+      organizer: 'Download Organizer',
     },
     hub: {
       badge: 'INFOS & FAQ',
@@ -246,11 +250,11 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
           items: [
             {
               q: 'Quel est le but de ce site ?',
-              a: 'Ce portail réunit 6 applications logicielles et outils IA conçus pour Windows, Android et le Web, avec aperçus interactifs et téléchargements directs.',
+              a: 'Ce portail réunit 7 applications logicielles et outils IA conçus pour Windows, Android et le Web, avec aperçus interactifs et téléchargements directs.',
             },
             {
               q: 'Quelles sont les applications disponibles ?',
-              a: 'PDA4, Traducteur Hors-Ligne IA, Tools Hub, Bayah CV, Voice Environment et le Compresseur de Médias Officiel.',
+              a: 'PDA4, Traducteur Hors-Ligne IA, Tools Hub, Bayah CV, Voice Environment, le Compresseur de Médias Officiel et Download Organizer.',
             },
           ],
         },
@@ -309,6 +313,7 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
       bayahCv: 'Bayah CV ATS-Lebenslauf-Studio',
       voiceEnv: 'Voice Environment KI-Audio-Studio',
       compressor: 'Offizieller Medienkompressor',
+      organizer: 'Download Organizer',
     },
     hub: {
       badge: 'INFO & FAQ',
@@ -321,11 +326,11 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
           items: [
             {
               q: 'Was bietet diese Plattform?',
-              a: 'Diese Website ist das zentrale Portal für 6 plattformübergreifende KI- und Produktivitätsanwendungen für Windows, Android und das Web.',
+              a: 'Diese Website ist das zentrale Portal für 7 plattformübergreifende KI- und Produktivitätsanwendungen für Windows, Android und das Web.',
             },
             {
               q: 'Welche Anwendungen sind enthalten?',
-              a: 'PDA4, KI-Offline-Übersetzer, Tools Hub, Bayah CV, Voice Environment und der Offizielle Medienkompressor.',
+              a: 'PDA4, KI-Offline-Übersetzer, Tools Hub, Bayah CV, Voice Environment, der Offizielle Medienkompressor und Download Organizer.',
             },
           ],
         },
@@ -384,6 +389,7 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
       bayahCv: 'Bayah CV 履歴書スタジオ',
       voiceEnv: 'Voice Environment AI 音声スタジオ',
       compressor: '公式メディア圧縮ツール',
+      organizer: 'Download Organizer (ダウンロード整理)',
     },
     hub: {
       badge: 'INFO & FAQ',
@@ -396,11 +402,11 @@ export const FOOTER_HUB_I18N: Record<SupportedLang, UnifiedInfoHubTranslations> 
           items: [
             {
               q: 'このサイトは何を提供していますか？',
-              a: 'Windows、Android、Web向けに設計された6つのスマートアプリケーションとAIツールのプレビューおよび直接ダウンロードを提供する統合ポータルです。',
+              a: 'Windows、Android、Web向けに設計された7つのスマートアプリケーションとAIツールのプレビューおよび直接ダウンロードを提供する統合ポータルです。',
             },
             {
               q: 'どのようなアプリが含まれていますか？',
-              a: 'PDA4、スマートオフライン翻訳、Tools Hub、Bayah CV、Voice Environment、公式メディア圧縮ツールの6つのプロジェクトが含まれています。',
+              a: 'PDA4、スマートオフライン翻訳、Tools Hub、Bayah CV、Voice Environment、公式メディア圧縮ツール、Download Organizerの7つのプロジェクトが含まれています。',
             },
           ],
         },
@@ -516,12 +522,12 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
         className={
           hubOpen
             ? 'hidden'
-            : 'clean-arabic-sans md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t border-white/10 bg-[radial-gradient(35%_128px_at_50%_0%,rgba(255,255,255,0.08),transparent)] px-6 py-12 lg:py-16 text-white'
+            : 'clean-arabic-sans md:rounded-t-6xl relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t border-white/10 bg-[radial-gradient(35%_128px_at_50%_0%,rgba(255,255,255,0.08),transparent)] px-5 pt-10 pb-20 md:px-6 md:py-12 lg:py-16 text-white'
         }
       >
         <div className="bg-white/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
-        <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
+        <div className="grid w-full gap-6 md:gap-8 xl:grid-cols-3 xl:gap-8">
           <AnimatedContainer className="space-y-2">
             <p className="text-base font-bold tracking-tight text-white/90">
               {content.brandTitle}
@@ -568,14 +574,14 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
             </p>
           </AnimatedContainer>
 
-          <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+          <div className="mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
             {/* Column 1: Apps */}
             <AnimatedContainer delay={0.1}>
-              <div className="mb-10 md:mb-0">
+              <div className="mb-2 sm:mb-6 md:mb-0">
                 <h3 className="text-xs font-bold tracking-wider text-white/90 uppercase">
                   {content.colApps}
                 </h3>
-                <ul className="text-zinc-400 mt-4 space-y-2.5 text-sm">
+                <ul className="text-zinc-400 mt-3 md:mt-4 space-y-2.5 text-sm">
                   <li>
                     <a href="#pda4" onClick={(e) => handleAppClick(e, 'pda4')} className="hover:text-white inline-flex items-center transition-all duration-300">
                       {content.appNames.pda4}
@@ -596,17 +602,22 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
                       {content.appNames.bayahCv}
                     </a>
                   </li>
+                  <li>
+                    <a href="#download-organizer" onClick={(e) => handleAppClick(e, 'download-organizer')} className="hover:text-white inline-flex items-center transition-all duration-300">
+                      {content.appNames.organizer}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </AnimatedContainer>
 
             {/* Column 2: Cloud Platforms */}
             <AnimatedContainer delay={0.2}>
-              <div className="mb-10 md:mb-0">
+              <div className="mb-2 sm:mb-6 md:mb-0">
                 <h3 className="text-xs font-bold tracking-wider text-white/90 uppercase">
                   {content.colCloud}
                 </h3>
-                <ul className="text-zinc-400 mt-4 space-y-2.5 text-sm">
+                <ul className="text-zinc-400 mt-3 md:mt-4 space-y-2.5 text-sm">
                   <li>
                     <a href="#voice-env" onClick={(e) => handleAppClick(e, 'voice-env')} className="hover:text-white inline-flex items-center transition-all duration-300">
                       {content.appNames.voiceEnv}
@@ -633,11 +644,11 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
 
             {/* Column 3: ONE Single Unified Info Button (Replaces the 4 separate links) */}
             <AnimatedContainer delay={0.3}>
-              <div className="mb-10 md:mb-0">
+              <div className="mb-2 sm:mb-6 md:mb-0">
                 <h3 className="text-xs font-bold tracking-wider text-white/90 uppercase">
                   {content.colInfo}
                 </h3>
-                <div className="mt-4">
+                <div className="mt-3 md:mt-4">
                   <button
                     type="button"
                     onClick={handleOpenHub}
@@ -652,11 +663,11 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
 
             {/* Column 4: Social Links */}
             <AnimatedContainer delay={0.4}>
-              <div className="mb-10 md:mb-0">
+              <div className="mb-2 sm:mb-6 md:mb-0">
                 <h3 className="text-xs font-bold tracking-wider text-white/90 uppercase">
                   {content.colSocial}
                 </h3>
-                <ul className="text-zinc-400 mt-4 space-y-2.5 text-sm">
+                <ul className="text-zinc-400 mt-3 md:mt-4 space-y-2.5 text-sm">
                   <li>
                     <a href="https://www.facebook.com/share/1DwTLmUs8h/" target="_blank" rel="noopener noreferrer" className="hover:text-white inline-flex items-center gap-1.5 transition-all duration-300">
                       <FacebookIcon className="size-4" />
@@ -694,7 +705,7 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
           dir={isRtl ? 'rtl' : 'ltr'}
           className="clean-arabic-sans min-h-screen w-full bg-[#070709] text-white"
         >
-          <div className="relative mx-auto w-full max-w-2xl px-6 py-16 md:py-24">
+          <div className="relative mx-auto w-full max-w-2xl px-5 pt-20 pb-24 md:px-6 md:py-24">
             {/* Top Close Button */}
             <button
               type="button"
@@ -704,18 +715,18 @@ export function Footer({ onSelectApp, onHubOpenChange }: FooterProps) {
                 handleCloseHub();
               }}
               aria-label={content.hub.closeBtn}
-              className="fixed top-6 right-6 z-[9999] pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-zinc-900/90 px-5 py-2.5 text-xs md:text-sm font-semibold text-white shadow-xl backdrop-blur-md transition hover:border-white/40 hover:bg-zinc-800 active:scale-95 cursor-pointer"
+              className="fixed top-4 right-4 md:top-6 md:right-6 z-[9999] pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/20 bg-zinc-900/90 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-semibold text-white shadow-xl backdrop-blur-md transition hover:border-white/40 hover:bg-zinc-800 active:scale-95 cursor-pointer"
             >
               <X className="size-4" />
               <span>{content.hub.closeBtn}</span>
             </button>
 
               {/* Header */}
-              <div className="text-center mb-14">
+              <div className="text-center mb-10 md:mb-14">
                 <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
                   {content.hub.badge}
                 </span>
-                <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-white">
+                <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
                   {content.hub.title}
                 </h2>
                 <p className="mt-3 text-sm md:text-base text-zinc-400">

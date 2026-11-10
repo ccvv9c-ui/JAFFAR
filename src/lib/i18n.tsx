@@ -137,6 +137,14 @@ export const SITE_TRANSLATIONS: Record<SupportedLang, SiteTranslation> = {
         ],
         secondaryLabels: ["زيارة الموقع الرسمي للمترجم الذكي"],
       },
+      "download-organizer": {
+        shortTitle: "منظم التنزيلات",
+        fullTitle: "منظم التنزيلات | Download Organizer",
+        description: "تنظيم تلقائي ذكي للملفات والتنزيلات بضغطة واحدة مع كشف المكررات وتراجع آمن",
+        heading: "هل أنت مستعد لتنظيم ملفاتك؟",
+        primaryLabels: ["تحميل نسخة الديسكتوب المباشرة (Portable EXE)"],
+        secondaryLabels: [],
+      },
     },
     footer: {
       brandName: "المنصة الرقمية للتطبيقات",
@@ -311,6 +319,14 @@ export const SITE_TRANSLATIONS: Record<SupportedLang, SiteTranslation> = {
         ],
         secondaryLabels: ["Visit Official Translator Website"],
       },
+      "download-organizer": {
+        shortTitle: "Download Organizer",
+        fullTitle: "Download Organizer | Smart File Manager",
+        description: "One-click automatic folder organization, duplicate detection, custom rules, and safe rollback",
+        heading: "Ready to organize your files?",
+        primaryLabels: ["Download Desktop Portable EXE"],
+        secondaryLabels: [],
+      },
     },
     footer: {
       brandName: "Digital Applications Hub",
@@ -481,6 +497,14 @@ export const SITE_TRANSLATIONS: Record<SupportedLang, SiteTranslation> = {
           "Télécharger l'APK Android",
         ],
         secondaryLabels: ["Visiter le site officiel du traducteur"],
+      },
+      "download-organizer": {
+        shortTitle: "Download Organizer",
+        fullTitle: "Download Organizer | Organiseur Intelligent",
+        description: "Organisation automatique en un clic, détection des doublons, règles personnalisées et annulation sûre",
+        heading: "Prêt à organiser vos fichiers ?",
+        primaryLabels: ["Télécharger EXE Portable (Windows)"],
+        secondaryLabels: [],
       },
     },
     footer: {
@@ -653,6 +677,14 @@ export const SITE_TRANSLATIONS: Record<SupportedLang, SiteTranslation> = {
         ],
         secondaryLabels: ["Offizielle Übersetzer-Website besuchen"],
       },
+      "download-organizer": {
+        shortTitle: "Download Organizer",
+        fullTitle: "Download Organizer | Intelligenter Dateimanager",
+        description: "Automatische Ein-Klick-Ordnerorganisation, Duplikaterkennung, eigene Regeln und sicheres Zurücksetzen",
+        heading: "Bereit, Ihre Dateien zu ordnen?",
+        primaryLabels: ["Portable Desktop-EXE herunterladen"],
+        secondaryLabels: [],
+      },
     },
     footer: {
       brandName: "Digitale Anwendungsplattform",
@@ -822,6 +854,14 @@ export const SITE_TRANSLATIONS: Record<SupportedLang, SiteTranslation> = {
         ],
         secondaryLabels: ["公式翻訳サイトを開く"],
       },
+      "download-organizer": {
+        shortTitle: "Download Organizer",
+        fullTitle: "Download Organizer | スマートダウンロード整理",
+        description: "ワンクリック自動整理、重複ファイル検出、カスタムルール設定、安全なロールバック機能",
+        heading: "ファイルを整理しますか？",
+        primaryLabels: ["デスクトップ ポータブル EXE をダウンロード"],
+        secondaryLabels: [],
+      },
     },
     footer: {
       brandName: "デジタルアプリケーションハブ",
@@ -950,7 +990,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       {/* Compact Floating Corner Language Switcher Pill */}
       <div
         dir="ltr"
-        className="fixed bottom-5 left-5 z-50 pointer-events-auto transition-transform duration-300 hover:scale-105"
+        className="fixed bottom-3.5 left-3.5 md:bottom-5 md:left-5 z-50 max-w-[calc(100vw-4.5rem)] pointer-events-auto transition-transform duration-300 hover:scale-105"
       >
         <LanguageSwitcherPill
           aria-label="Select Website Language"

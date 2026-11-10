@@ -170,11 +170,11 @@ function AppContent() {
         />
 
         {/* Floating Glass Gear & Animated Customization Popover */}
-        <div className="absolute bottom-5 right-5 z-30 flex flex-col items-end">
+        <div className="absolute bottom-3.5 right-3.5 md:bottom-5 md:right-5 z-30 flex flex-col items-end">
         <aside
           aria-label="Simulation Customization"
           aria-hidden={!settingsOpen}
-          className={`mb-3 w-[310px] origin-bottom-right rounded-2xl border border-white/15 bg-[#070a14]/75 p-4 text-slate-100 shadow-2xl backdrop-blur-xl space-y-4 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`mb-3 w-[min(310px,calc(100vw-1.75rem))] md:w-[310px] origin-bottom-right rounded-2xl border border-white/15 bg-[#070a14]/75 p-4 text-slate-100 shadow-2xl backdrop-blur-xl space-y-4 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             settingsOpen
               ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
               : "pointer-events-none translate-y-3 scale-90 opacity-0"

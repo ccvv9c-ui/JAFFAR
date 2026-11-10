@@ -65,6 +65,13 @@ export const JAAFAR_APPS: WorkItem[] = [
     image: "/apps/offline-translator.png",
     href: "#",
   },
+  {
+    id: "download-organizer",
+    title: "منظم التنزيلات",
+    subtitle: "تنظيم تلقائي ذكي للملفات والتنزيلات بضغطة واحدة مع كشف المكررات وتراجع آمن",
+    image: "/apps/download-organizer/logo.png",
+    href: "#download-organizer",
+  },
 ]
 
 export interface CardTransformResult {
@@ -178,6 +185,7 @@ export default function WorksWheel({
   const count = items.length || 1
   const [mode, setMode] = useState<"wheel" | "focus">(initialMode)
   const [activeIndex, setActiveIndex] = useState<number>(0)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
   const [, setTick] = useState<number>(0)
 
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -195,6 +203,15 @@ export default function WorksWheel({
     wheelAccum: 0,
     lastWheelTime: 0,
   })
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const mq = window.matchMedia("(max-width: 767px)")
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
+  }, [])
 
   const selectIndex = useCallback(
     (idx: number, nextMode?: "wheel" | "focus") => {
@@ -336,6 +353,13 @@ export default function WorksWheel({
   }, [count])
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const targetEl = e.target as HTMLElement | null
+    if (
+      targetEl?.closest('[data-wheel-nav="true"]') ||
+      targetEl?.closest('[data-wheel-collapse="true"]')
+    ) {
+      return
+    }
     const s = stateRef.current
     s.dragging = true
     s.startY = e.clientY
@@ -353,7 +377,7 @@ export default function WorksWheel({
       s.moved = true
     }
     s.lastY = e.clientY
-    const delta = -dy / 180
+    const delta = -dy / (isMobile ? 140 : 180)
     s.pos += delta
     s.targetPos = s.pos
     s.vel = delta * 0.3
@@ -371,6 +395,7 @@ export default function WorksWheel({
   const s = stateRef.current
   const m = s.morph
   const activeItem = items[activeIndex] ?? items[0]
+  const mobileScale = isMobile ? 0.68 : 1
 
   return (
     <section
@@ -390,15 +415,15 @@ export default function WorksWheel({
       {/* Top Seamless Blend Overlay */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-36 bg-gradient-to-b from-[#050507] via-[#050507]/70 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 md:h-36 bg-gradient-to-b from-[#050507] via-[#050507]/70 to-transparent"
       />
       {/* Bottom Seamless Blend Overlay */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-[#050507] via-[#050507]/70 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 md:h-36 bg-gradient-to-t from-[#050507] via-[#050507]/70 to-transparent"
       />
 
-      {/* Subtle Side Collapse Chevron (<) in Focus Mode — matches video far-left arrow */}
+      {/* Subtle Side Collapse Chevron (<) in Focus Mode — matches video far-left arrow on desktop, accessible top-left button on mobile */}
       <button
         type="button"
         data-wheel-collapse="true"
@@ -413,22 +438,24 @@ export default function WorksWheel({
           opacity: Math.max(0, Math.min(1, (m - 0.45) * 2.2)),
           pointerEvents: m > 0.6 ? "auto" : "none",
         }}
-        className="absolute left-4 md:left-7 top-1/2 -translate-y-1/2 z-30 flex h-9 w-9 items-center justify-center rounded-full text-white/40 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+        className="absolute left-4 top-[17%] -translate-y-1/2 md:left-7 md:top-1/2 z-30 flex h-10 w-10 md:h-9 md:w-9 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white/80 backdrop-blur-md md:border-0 md:bg-transparent md:text-white/40 md:backdrop-blur-none hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
       >
         <ChevronLeft className="h-4 w-4" />
       </button>
 
-      {/* Active App Clean Title on the Left in Focus Mode — matches video minimal typography */}
+      {/* Active App Clean Title in Focus Mode — top-centered on mobile to avoid card collision, left-aligned on desktop */}
       <div
         dir="auto"
         style={{
           opacity: Math.max(0, Math.min(1, (m - 0.35) * 2.2)),
-          transform: `translate3d(${(1 - m) * -18}px, -50%, 0)`,
+          transform: isMobile
+            ? `translate3d(-50%, ${(1 - m) * -12 - 50}%, 0)`
+            : `translate3d(${(1 - m) * -18}px, -50%, 0)`,
           pointerEvents: "none",
         }}
-        className="absolute left-12 md:left-16 top-1/2 z-30 max-w-xs"
+        className="absolute left-1/2 top-[17%] w-[calc(100%-6.5rem)] text-center md:w-auto md:text-start md:left-16 md:top-1/2 z-30 max-w-xs"
       >
-        <h3 className="text-2xl md:text-4xl font-medium tracking-tight text-white whitespace-nowrap">
+        <h3 className="text-xl sm:text-2xl md:text-4xl font-medium tracking-tight text-white truncate md:whitespace-nowrap">
           {activeItem?.title}
         </h3>
       </div>
@@ -443,17 +470,21 @@ export default function WorksWheel({
         }}
         className="absolute left-1/2 top-1/2 z-20 flex items-center justify-center text-center"
       >
-        <span className="text-xl md:text-2xl font-semibold tracking-tight text-white whitespace-nowrap">
+        <span className="text-lg sm:text-xl md:text-2xl font-semibold tracking-tight text-white whitespace-nowrap">
           {centerTitle}
         </span>
       </div>
 
-      {/* Top-Right Minimal Index Navigation List — matches video top-right list */}
+      {/* Navigation List — Sleek Horizontal Scrollable Bar on Mobile (<768px), Top-Right Minimal Index List on Desktop (>=768px) */}
       <nav
         dir={dir}
         data-wheel-nav="true"
         aria-label="قائمة تطبيقات جعفر العبادي"
-        className="absolute top-6 right-6 md:top-10 md:right-12 z-30 flex flex-col items-start gap-1.5"
+        onClick={(e) => e.stopPropagation()}
+        className="
+          absolute top-5 inset-x-3 z-30 flex flex-row items-center gap-1.5 overflow-x-auto rounded-full border border-white/10 bg-black/55 px-3 py-2 backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+          md:inset-x-auto md:top-10 md:right-12 md:flex-col md:items-start md:gap-1.5 md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none
+        "
       >
         {items.map((item, idx) => {
           const isCurrent = idx === activeIndex
@@ -465,10 +496,10 @@ export default function WorksWheel({
                 e.stopPropagation()
                 selectIndex(idx, "focus")
               }}
-              className={`text-xs md:text-sm tracking-tight transition-colors duration-200 cursor-pointer whitespace-nowrap ${
+              className={`shrink-0 rounded-full px-3 py-1 text-[11px] sm:text-xs md:rounded-none md:px-0 md:py-0 md:text-sm tracking-tight transition-colors duration-200 cursor-pointer whitespace-nowrap ${
                 isCurrent
-                  ? "text-white font-semibold"
-                  : "text-white/35 hover:text-white/75"
+                  ? "bg-white/15 text-white font-semibold md:bg-transparent"
+                  : "text-white/50 hover:text-white/80 md:text-white/35 md:hover:text-white/75"
               }`}
             >
               {item.title}
@@ -479,9 +510,9 @@ export default function WorksWheel({
 
       {/* 3D Wheel / Unfolded Cylinder Roller Stage */}
       <div
-        className="relative flex h-full w-full items-center justify-center"
+        className="relative flex h-full w-full items-center justify-center pt-8 md:pt-0"
         style={{
-          perspective: "1200px",
+          perspective: isMobile ? "950px" : "1200px",
           transformStyle: "preserve-3d",
         }}
       >
@@ -489,9 +520,13 @@ export default function WorksWheel({
           const tf = computeWheelCardTransform(idx, s.pos, count, m)
           const { rel, x, y, z, rotX, rotY, rotZ, scale, opacity, zIndex, isCenterFocused } = tf
 
-          // Smoothly morph aspect ratio from square wheel tile (310x310) to landscape roller card (390x260)
-          const cardWidth = Math.round(310 + m * 80)
-          const cardHeight = Math.round(310 - m * 50)
+          // Smoothly morph aspect ratio from square wheel tile (310x310) to landscape roller card (390x260) on desktop;
+          // proportionally scaled on mobile so cards fit comfortably within 320px-430px screens.
+          const cardWidth = Math.round((310 + m * 80) * (isMobile ? 0.72 : 1))
+          const cardHeight = Math.round((310 - m * 50) * (isMobile ? 0.72 : 1))
+          const dispX = x * mobileScale
+          const dispY = y * mobileScale
+          const dispZ = z * mobileScale
 
           return (
             <div
@@ -514,7 +549,7 @@ export default function WorksWheel({
                 opacity,
                 zIndex,
                 pointerEvents: opacity > 0.15 ? "auto" : "none",
-                transform: `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z.toFixed(1)}px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg) scale(${scale.toFixed(3)})`,
+                transform: `translate3d(${dispX.toFixed(1)}px, ${dispY.toFixed(1)}px, ${dispZ.toFixed(1)}px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg) scale(${scale.toFixed(3)})`,
               }}
               className="group absolute overflow-hidden rounded-2xl bg-zinc-900 ring-1 ring-white/10 cursor-pointer will-change-transform shadow-[0_24px_60px_rgba(0,0,0,0.75)]"
             >
@@ -525,7 +560,7 @@ export default function WorksWheel({
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
 
-              {/* Bottom-Right Hover Action Pill ("فتح التطبيق ↗") — appears on the active center card in Focus Mode like "↗ View" in the video */}
+              {/* Bottom-Right Action Pill ("فتح التطبيق ↗") — always visible on mobile touch screens, appears on hover on desktop */}
               {isCenterFocused && (
                 <button
                   type="button"
@@ -533,7 +568,7 @@ export default function WorksWheel({
                     e.stopPropagation()
                     onItemClick?.(item, idx)
                   }}
-                  className="absolute bottom-3.5 right-3.5 flex items-center gap-1.5 rounded-full bg-black/75 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md border border-white/15 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 focus-visible:opacity-100 transition-all duration-200 hover:bg-black/90 cursor-pointer"
+                  className="absolute bottom-3 right-3 md:bottom-3.5 md:right-3.5 flex items-center gap-1.5 rounded-full bg-black/80 md:bg-black/75 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md border border-white/20 md:border-white/15 opacity-100 translate-y-0 md:opacity-0 md:translate-y-1 md:group-hover:opacity-100 md:group-hover:translate-y-0 focus-visible:opacity-100 transition-all duration-200 hover:bg-black/90 cursor-pointer shadow-lg"
                 >
                   <ArrowUpRight className="h-3.5 w-3.5" />
                   <span>{viewLabel}</span>

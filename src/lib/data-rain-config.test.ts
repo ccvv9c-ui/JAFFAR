@@ -103,8 +103,8 @@ import {
   isPointerInWheelAppsZone,
 } from "../components/ui/works-wheel";
 
-test("WorksWheel JAAFAR_APPS contains all 6 exact applications and computeWheelCardTransform computes 3D wheel & focus poses", () => {
-  assert.equal(JAAFAR_APPS.length, 6);
+test("WorksWheel JAAFAR_APPS contains all 7 exact applications and computeWheelCardTransform computes 3D wheel & focus poses", () => {
+  assert.equal(JAAFAR_APPS.length, 7);
   assert.deepEqual(
     JAAFAR_APPS.map((a) => a.title),
     [
@@ -114,6 +114,7 @@ test("WorksWheel JAAFAR_APPS contains all 6 exact applications and computeWheelC
       "بيئة الصوت",
       "بيئة CV",
       "مترجم اوفلاين الذكي",
+      "منظم التنزيلات",
     ]
   );
 
@@ -284,6 +285,26 @@ test("APPS_SHOWCASE_DATA['media-compressor'] has all 4 slides, official Web App 
   assert.equal(mc.secondaryLinks.length, 0);
 
   assert.equal(resolveAppShowcaseId(JAAFAR_APPS[2]), "media-compressor");
+  assert.equal(resolveAppShowcaseId(JAAFAR_APPS[6]), "download-organizer");
+
+  const doApp = APPS_SHOWCASE_DATA["download-organizer"];
+  assert.equal(doApp.id, "download-organizer");
+  assert.equal(doApp.giantText, "ORGANIZER");
+  assert.equal(doApp.heading, "Ready to organize?");
+  assert.deepEqual(doApp.images, [
+    "/apps/download-organizer/slide-1.png",
+    "/apps/download-organizer/slide-2.png",
+    "/apps/download-organizer/slide-3.png",
+    "/apps/download-organizer/slide-4.png",
+  ]);
+  assert.equal(doApp.primaryLinks.length, 1);
+  assert.equal(doApp.primaryLinks[0].icon, "exe");
+  assert.equal(
+    doApp.primaryLinks[0].href,
+    "https://drive.google.com/file/d/1CstDHI0pYpYflwAoytfu507657a4M-fI/view?usp=drive_link"
+  );
+  assert.equal(doApp.secondaryLinks.length, 0);
+
   assert.deepEqual(
     JAAFAR_APPS.map((item) => resolveAppShowcaseId(item)),
     [
@@ -293,6 +314,7 @@ test("APPS_SHOWCASE_DATA['media-compressor'] has all 4 slides, official Web App 
       "voice-env",
       "bayah-cv",
       "offline-translator",
+      "download-organizer",
     ]
   );
 });
